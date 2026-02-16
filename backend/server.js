@@ -22,7 +22,13 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173' })); // Vite dev server
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://deskflow-toi6.vercel.app/"
+  ],
+  credentials: true
+})); // Vite dev server
 app.use(express.json());
 
 // Routes
