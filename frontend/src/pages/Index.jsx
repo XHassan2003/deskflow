@@ -33,7 +33,7 @@ const Index = () => {
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 backdrop-blur-sm opacity-0 animate-fade-in">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary-foreground">India's #1 Coworking Platform</span>
+              <span className="text-sm font-medium text-primary-foreground">Pakistan's #1 Coworking Platform</span>
             </div>
             <h1 className="mb-6 font-display text-5xl font-bold leading-[1.1] text-primary-foreground md:text-7xl opacity-0 animate-fade-in animate-stagger-1">
               Find Your Perfect

@@ -1,6 +1,16 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Star, MapPin, Users, ArrowLeft, Check, Clock, Shield, ArrowRight } from "lucide-react";
-import { spaces } from "@/data/spaces";
+import {
+  Star,
+  MapPin,
+  Users,
+  ArrowLeft,
+  Check,
+  Clock,
+  Shield,
+  ArrowRight,
+} from "lucide-react";
+import { spaces } from "../data/spaces";
+
 
 const SpaceDetails = () => {
   const { id } = useParams();

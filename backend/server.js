@@ -6,6 +6,16 @@ const connectDB = require('./config/db');
 // Load env vars
 dotenv.config();
 
+// Use explicit DNS servers for Node's SRV resolution (workaround for local DNS/c-ares issues)
+// This forces Node to query public resolvers so mongodb+srv lookups succeed in dev.
+const dns = require('dns');
+try {
+  dns.setServers(['8.8.8.8','1.1.1.1']);
+  console.log('DNS servers set to', dns.getServers());
+} catch (err) {
+  console.warn('Failed to set DNS servers:', err.message);
+}
+
 // Connect to MongoDB
 connectDB();
 

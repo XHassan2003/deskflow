@@ -26,7 +26,7 @@ const Contact = () => {
           {[
             { icon: Mail, label: "hello@deskflow.in", sub: "Email us" },
             { icon: Phone, label: "+91 98765 43210", sub: "Call us" },
-            { icon: MapPin, label: "Mumbai, Maharashtra, India", sub: "Visit us" },
+            { icon: MapPin, label: "Mumbai, Maharashtra, Pakistan", sub: "Visit us" },
           ].map((item, i) => (
             <div
               key={item.label}

@@ -18,7 +18,7 @@ const About = () => (
         About <span className="gradient-text">DeskFlow</span>
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-        DeskFlow helps freelancers, startups, and remote teams discover and book the best coworking spaces across India — hassle-free.
+        DeskFlow helps freelancers, startups, and remote teams discover and book the best coworking spaces across Pakistan — hassle-free.
       </p>
     </div>
 

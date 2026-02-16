@@ -9,7 +9,7 @@ const Footer = () => (
             Desk<span className="gradient-text">Flow</span>
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            India's favorite platform for discovering and booking coworking spaces.
+            Pakistan's favorite platform for discovering and booking coworking spaces.
           </p>
         </div>
         <div>
@@ -38,7 +38,7 @@ const Footer = () => (
       </div>
       <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
         <p className="flex items-center gap-1 text-sm text-muted-foreground">
-          Made with <Heart className="h-3.5 w-3.5 fill-primary text-primary" /> in India
+          Made with <Heart className="h-3.5 w-3.5 fill-primary text-primary" /> in Pakistan
         </p>
         <p className="text-sm text-muted-foreground">
           © 2026 DeskFlow. All rights reserved.
