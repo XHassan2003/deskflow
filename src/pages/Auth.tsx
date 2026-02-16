@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Mail, Lock, User, ArrowRight } from "lucide-react";
+import { Mail, Lock, User, ArrowRight, Sparkles } from "lucide-react";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -40,29 +40,36 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex min-h-[70vh] items-center justify-center px-4">
+    <div className="flex min-h-[75vh] items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        <div className="text-center">
-          <h1 className="font-display text-3xl font-bold text-foreground">
+        <div className="text-center opacity-0 animate-fade-in">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
+            <Sparkles className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="font-display text-4xl font-bold text-foreground">
             {isLogin ? "Welcome Back" : "Create Account"}
           </h1>
-          <p className="mt-2 text-muted-foreground">
+          <p className="mt-3 text-muted-foreground">
             {isLogin ? "Sign in to your DeskFlow account" : "Join DeskFlow today"}
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-4 rounded-xl border border-border bg-card p-6">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-10 space-y-5 rounded-2xl border border-border bg-card p-8 opacity-0 animate-fade-in-up animate-stagger-1"
+          style={{ boxShadow: "var(--shadow-card)" }}
+        >
           {!isLogin && (
             <div>
-              <label className="mb-1 block text-sm font-medium text-foreground">Name</label>
+              <label className="mb-2 block text-sm font-semibold text-foreground">Name</label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <User className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="text"
                   required
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="input-styled pl-11"
                   placeholder="Your name"
                 />
               </div>
@@ -70,31 +77,31 @@ const Auth = () => {
           )}
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-foreground">Email</label>
+            <label className="mb-2 block text-sm font-semibold text-foreground">Email</label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="input-styled pl-11"
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-foreground">Password</label>
+            <label className="mb-2 block text-sm font-semibold text-foreground">Password</label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Lock className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="password"
                 required
                 minLength={6}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-input bg-background py-2 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="input-styled pl-11"
                 placeholder="••••••••"
               />
             </div>
@@ -102,34 +109,30 @@ const Auth = () => {
 
           {isLogin && (
             <div className="text-right">
-              <Link to="/forgot-password" className="text-xs text-primary hover:underline">
+              <Link to="/forgot-password" className="text-xs font-medium text-primary hover:underline">
                 Forgot password?
               </Link>
             </div>
           )}
 
           {error && (
-            <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</p>
+            <p className="rounded-xl bg-destructive/10 p-4 text-sm text-destructive animate-fade-in">{error}</p>
           )}
           {message && (
-            <p className="rounded-lg bg-accent/10 p-3 text-sm text-accent">{message}</p>
+            <p className="rounded-xl bg-accent/10 p-4 text-sm text-accent animate-fade-in">{message}</p>
           )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
-          >
+          <button type="submit" disabled={loading} className="btn-primary w-full py-3.5 text-base disabled:opacity-50">
             {loading ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-5 w-5" />
           </button>
         </form>
 
-        <p className="mt-4 text-center text-sm text-muted-foreground">
+        <p className="mt-6 text-center text-sm text-muted-foreground opacity-0 animate-fade-in animate-stagger-3">
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
           <button
             onClick={() => { setIsLogin(!isLogin); setError(""); setMessage(""); }}
-            className="font-medium text-primary hover:underline"
+            className="font-semibold text-primary hover:underline"
           >
             {isLogin ? "Sign up" : "Sign in"}
           </button>
