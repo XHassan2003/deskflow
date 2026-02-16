@@ -9,6 +9,8 @@ const Navbar = () => {
   const links = [
     { to: "/", label: "Home" },
     { to: "/spaces", label: "Explore" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (

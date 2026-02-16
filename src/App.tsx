@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import Spaces from "./pages/Spaces";
 import SpaceDetails from "./pages/SpaceDetails";
 import BookingConfirmation from "./pages/BookingConfirmation";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
               <Route path="/spaces" element={<Spaces />} />
               <Route path="/spaces/:id" element={<SpaceDetails />} />
               <Route path="/booking/:id" element={<BookingConfirmation />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
