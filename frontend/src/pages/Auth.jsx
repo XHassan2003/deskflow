@@ -36,135 +36,143 @@ const Auth = () => {
     setLoading(false);
   };
 
-  return (
-    <div className="flex min-h-[75vh] items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
-        <div className="text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-            <Sparkles className="h-8 w-8 text-primary" />
-          </div>
-          <h1 className="font-display text-4xl font-bold text-foreground">
-            {isLogin ? "Welcome Back" : "Create Account"}
-          </h1>
-          <p className="mt-3 text-muted-foreground">
-            {isLogin
-              ? "Sign in to your DeskFlow account"
-              : "Join DeskFlow today"}
-          </p>
+return (
+  <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background to-secondary/30 px-4 py-12">
+    <div className="w-full max-w-md">
+      
+      {/* Header */}
+      <div className="text-center">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 shadow-md">
+          <Sparkles className="h-8 w-8 text-primary" />
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="mt-10 space-y-5 rounded-2xl border border-border bg-card p-8"
-        >
-          {!isLogin && (
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-foreground">
-                Name
-              </label>
-              <div className="relative">
-                <User className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <input
-                  type="text"
-                  required
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                  className="input-styled pl-11"
-                  placeholder="Your name"
-                />
-              </div>
-            </div>
-          )}
+        <h1 className="font-display text-4xl font-bold tracking-tight text-foreground">
+          {isLogin ? "Welcome Back" : "Create Account"}
+        </h1>
 
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-foreground">
-              Email
-            </label>
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="input-styled pl-11"
-                placeholder="you@example.com"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="mb-2 block text-sm font-semibold text-foreground">
-              Password
-            </label>
-            <div className="relative">
-              <Lock className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                type="password"
-                required
-                minLength={6}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="input-styled pl-11"
-                placeholder="••••••••"
-              />
-            </div>
-          </div>
-
-          {isLogin && (
-            <div className="text-right">
-              <Link
-                to="/forgot-password"
-                className="text-xs font-medium text-primary hover:underline"
-              >
-                Forgot password?
-              </Link>
-            </div>
-          )}
-
-          {error && (
-            <p className="rounded-xl bg-destructive/10 p-4 text-sm text-destructive">
-              {error}
-            </p>
-          )}
-          {message && (
-            <p className="rounded-xl bg-accent/10 p-4 text-sm text-accent">
-              {message}
-            </p>
-          )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full py-3.5 text-base disabled:opacity-50"
-          >
-            {loading
-              ? "Please wait..."
-              : isLogin
-              ? "Sign In"
-              : "Create Account"}
-            <ArrowRight className="h-5 w-5" />
-          </button>
-        </form>
-
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-2 text-muted-foreground">
           {isLogin
-            ? "Don't have an account?"
-            : "Already have an account?"}{" "}
-          <button
-            onClick={() => {
-              setIsLogin(!isLogin);
-              setError("");
-              setMessage("");
-            }}
-            className="font-semibold text-primary hover:underline"
-          >
-            {isLogin ? "Sign up" : "Sign in"}
-          </button>
+            ? "Sign in to your DeskFlow account"
+            : "Join DeskFlow today"}
         </p>
       </div>
+
+      {/* Card */}
+      <form
+        onSubmit={handleSubmit}
+        className="mt-10 space-y-5 rounded-3xl border border-border bg-card p-8 shadow-xl backdrop-blur"
+      >
+        {!isLogin && (
+          <div>
+            <label className="mb-2 block text-sm font-medium text-foreground">
+              Name
+            </label>
+            <div className="relative">
+              <User className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                required
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                className="w-full rounded-xl border border-input bg-background py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                placeholder="Enter your name"
+              />
+            </div>
+          </div>
+        )}
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-foreground">
+            Email
+          </label>
+          <div className="relative">
+            <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-xl border border-input bg-background py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+              placeholder="you@example.com"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="mb-2 block text-sm font-medium text-foreground">
+            Password
+          </label>
+          <div className="relative">
+            <Lock className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="password"
+              required
+              minLength={6}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-xl border border-input bg-background py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+              placeholder="••••••••"
+            />
+          </div>
+        </div>
+
+        {isLogin && (
+          <div className="text-right">
+            <Link
+              to="/forgot-password"
+              className="text-xs font-medium text-primary hover:underline"
+            >
+              Forgot password?
+            </Link>
+          </div>
+        )}
+
+        {error && (
+          <p className="rounded-xl bg-destructive/10 p-3 text-sm text-destructive">
+            {error}
+          </p>
+        )}
+
+        {message && (
+          <p className="rounded-xl bg-accent/10 p-3 text-sm text-accent">
+            {message}
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-base font-semibold text-primary-foreground transition-all hover:scale-[1.02] hover:bg-primary/90 disabled:opacity-50"
+        >
+          {loading
+            ? "Please wait..."
+            : isLogin
+            ? "Sign In"
+            : "Create Account"}
+          <ArrowRight className="h-5 w-5" />
+        </button>
+      </form>
+
+      {/* Switch */}
+      <p className="mt-6 text-center text-sm text-muted-foreground">
+        {isLogin
+          ? "Don't have an account?"
+          : "Already have an account?"}{" "}
+        <button
+          onClick={() => {
+            setIsLogin(!isLogin);
+            setError("");
+            setMessage("");
+          }}
+          className="font-semibold text-primary hover:underline"
+        >
+          {isLogin ? "Sign up" : "Sign in"}
+        </button>
+      </p>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Auth;
