@@ -15,7 +15,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "https://deskflow-6hg2.onrender.com";
+ const API_URL = "https://deskflow-6hg2.onrender.com/api/auth";
+
+
 
   // Load user from token
   useEffect(() => {
