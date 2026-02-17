@@ -6,7 +6,7 @@ import {
   Calendar,
   Clock
 } from "lucide-react";
-import { spaces } from "../data/spaces"; // ✅ fixed path (adjust if needed)
+import { spaces } from "../data/spaces"; // still using local for now
 
 const BookingConfirmation = () => {
   const { id } = useParams();
@@ -34,8 +34,12 @@ const BookingConfirmation = () => {
   const bookingDate = new Date();
   bookingDate.setDate(bookingDate.getDate() + 1);
 
+  const serviceFee = Math.round(space.price * 0.1);
+  const total = space.price + serviceFee;
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-20">
+      {/* Success Header */}
       <div className="text-center">
         <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10">
           <CheckCircle className="h-12 w-12 text-accent" />
@@ -48,10 +52,12 @@ const BookingConfirmation = () => {
         </p>
       </div>
 
+      {/* Card */}
       <div
         className="mt-10 rounded-2xl border border-border bg-card p-8"
         style={{ boxShadow: "var(--shadow-card)" }}
       >
+        {/* Space Info */}
         <div className="flex items-start gap-5">
           <img
             src={space.image}
@@ -68,13 +74,14 @@ const BookingConfirmation = () => {
           </div>
         </div>
 
+        {/* Date + Duration */}
         <div className="mt-8 grid grid-cols-2 gap-4">
           <div className="rounded-xl bg-secondary p-4">
             <p className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
               <Calendar className="h-4 w-4" /> Date
             </p>
             <p className="mt-2 text-sm font-semibold text-secondary-foreground">
-              {bookingDate.toLocaleDateString("en-IN", {
+              {bookingDate.toLocaleDateString("en-PK", {
                 weekday: "short",
                 month: "short",
                 day: "numeric",
@@ -93,29 +100,31 @@ const BookingConfirmation = () => {
           </div>
         </div>
 
+        {/* Pricing */}
         <div className="mt-8 space-y-3 border-t border-border pt-6">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Space cost</span>
             <span className="font-medium text-foreground">
-              ₹{space.price}
+              Rs. {space.price.toLocaleString("en-PK")}
             </span>
           </div>
 
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Service fee</span>
             <span className="font-medium text-foreground">
-              ₹{Math.round(space.price * 0.1)}
+              Rs. {serviceFee.toLocaleString("en-PK")}
             </span>
           </div>
 
           <div className="flex justify-between border-t border-border pt-3 text-lg font-bold">
             <span className="text-foreground">Total</span>
             <span className="gradient-text">
-              ₹{space.price + Math.round(space.price * 0.1)}
+              Rs. {total.toLocaleString("en-PK")}
             </span>
           </div>
         </div>
 
+        {/* Booking ID */}
         <div className="mt-6 rounded-xl bg-muted p-4 text-center">
           <p className="text-xs text-muted-foreground">Booking ID</p>
           <p className="mt-1 font-mono text-sm font-bold text-foreground">
@@ -124,6 +133,7 @@ const BookingConfirmation = () => {
         </div>
       </div>
 
+      {/* Buttons */}
       <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
         <Link to="/spaces" className="btn-primary px-8 py-3.5">
           Browse More Spaces <ArrowRight className="h-5 w-5" />
