@@ -5,13 +5,14 @@ const bookingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
+    index: true
   },
   space: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Space',
-    required: true,
+    required: true
   },
-  date: { type: Date, required: true },
+  date: { type: Date, required: true, index: true },
   duration: {
     type: String,
     enum: ['1 day', '1 week', '1 month'],

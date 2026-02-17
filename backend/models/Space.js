@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const spaceSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  location: { type: String, required: true },
+  name: { type: String, required: true, trim: true },
+  location: { type: String, required: true, trim: true },
   price: { type: Number, required: true },
   priceUnit: { type: String, default: '/day' },
   rating: { type: Number, default: 0 },
@@ -12,6 +12,7 @@ const spaceSchema = new mongoose.Schema({
     type: String,
     enum: ['hot-desk', 'private-office', 'meeting-room', 'dedicated-desk'],
     required: true,
+    index: true,
   },
   amenities: [String],
   capacity: { type: Number, default: 1 },
