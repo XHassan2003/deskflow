@@ -4,8 +4,7 @@ import { Star, MapPin, ArrowUpRight } from "lucide-react";
 const SpaceCard = ({ space }) => {
   return (
     <Link
-      to={`/spaces/${space._id}`}
-
+      to={`/spaces/${space.id}`}
       className="group block overflow-hidden rounded-2xl border border-border bg-card hover-lift"
       style={{ boxShadow: "var(--shadow-card)" }}
     >
