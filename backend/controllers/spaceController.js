@@ -23,7 +23,7 @@ exports.getSpaces = async (req, res) => {
     }
 
     // Sorting
-    let sortOption = { rating: -1 }; // default: top rated
+    let sortOption = { rating: -1 };
 
     if (sort === 'price-low') sortOption = { price: 1 };
     if (sort === 'price-high') sortOption = { price: -1 };
@@ -45,7 +45,6 @@ exports.getSpaceById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validate MongoDB ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ message: 'Invalid space ID' });
     }
@@ -60,6 +59,23 @@ exports.getSpaceById = async (req, res) => {
 
   } catch (error) {
     console.error('Get Space By ID Error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// ✅ NEW FUNCTION (IMPORTANT)
+// @desc    Create a new space
+// @route   POST /api/spaces
+exports.createSpace = async (req, res) => {
+  try {
+    const newSpace = new Space(req.body);
+
+    const savedSpace = await newSpace.save();
+
+    res.status(201).json(savedSpace);
+
+  } catch (error) {
+    console.error('Create Space Error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
